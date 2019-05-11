@@ -59,7 +59,7 @@ public class ApiController {
 	@PostMapping("/api/checkinUser")
 	@ResponseBody
 	public HashMap<String, Object> checkIn(@RequestParam(name = "isHost", defaultValue = "false") boolean isHost,
-			@RequestParam(name="surname") String surname,
+			@RequestParam(name="surname", defaultValue = "generic") String surname,
 			@RequestParam(required = true)double lat,
 			@RequestParam(required= true) double lon) {
 		
