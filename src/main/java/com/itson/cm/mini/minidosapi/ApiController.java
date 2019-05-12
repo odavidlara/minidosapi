@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -56,6 +57,25 @@ public class ApiController {
 		return map;
 	}
 	
+	@GetMapping("/api/currenthost")
+	@ResponseBody
+	public HashMap<String, Object> currentHost(){
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("responseCode", "404");
+		map.put("responseText", "error ");
+		if(currentHost == null) {
+			map.put("responseCode", "404");
+			map.put("responseText", "host not found");
+		}else {
+			map.put("responseCode", "200");
+			map.put("hostName: ", currentHost.getSurname());
+			map.put("hostLat", currentHost.getLan());
+			map.put("hostLon", currentHost.getLon());
+		}
+		return map;
+
+	}
+	
 	@PostMapping("/api/checkinUser")
 	@ResponseBody
 	public HashMap<String, Object> checkIn(@RequestParam(name = "isHost", defaultValue = "false") boolean isHost,
@@ -69,6 +89,8 @@ public class ApiController {
 		if(isHost) {
 			Host host = new Host(surname, lat, lon);
 			this.currentHost = host;
+			responseCode = "200";
+			responseText = "a host has been registered";
 			//listOfHost.add(host);
 		}else {
 			if(currentHost == null) {
