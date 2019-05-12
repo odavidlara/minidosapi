@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -68,12 +69,23 @@ public class ApiController {
 			map.put("responseText", "host not found");
 		}else {
 			map.put("responseCode", "200");
+			map.put("responseText", "host found");
 			map.put("hostName: ", currentHost.getSurname());
 			map.put("hostLat", currentHost.getLan());
 			map.put("hostLon", currentHost.getLon());
 		}
 		return map;
 
+	}
+	
+	@DeleteMapping("/api/removehost")
+	@ResponseBody
+	public HashMap<String, Object> removeHost(){
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("responseCode", "200");
+		map.put("responseText", "host has been removed");
+		currentHost = null;
+		return map;
 	}
 	
 	@PostMapping("/api/checkinUser")
