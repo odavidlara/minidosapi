@@ -112,7 +112,7 @@ public class ApiController {
 				responseText = "There's no host available";
 			}else {
 				double dist = distanceInKms(lat, lon, currentHost.getLan(), currentHost.getLon());
-				if (dist < 2) { 
+				if (dist < 50) { 
 					responseCode = "200";
 					responseText = "good to go";
 				}else {
