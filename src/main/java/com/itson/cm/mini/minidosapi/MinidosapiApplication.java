@@ -14,16 +14,17 @@ public class MinidosapiApplication {
 		SpringApplication.run(MinidosapiApplication.class, args);
 	}
 	
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurerAdapter() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/api/checkinUser").allowedOrigins("http://localhost:8080");
-				registry.addMapping("/api/removehost").allowedOrigins("http://localhost:8080");
-				registry.addMapping("/api/currenthost").allowedOrigins("http://localhost:8080");
-			}
-		};
-	}
+	
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurerAdapter() {
+//			@Override
+//			public void addCorsMappings(CorsRegistry registry) {
+//				registry.addMapping("/api/checkinUser").allowedOrigins("http://localhost:8080");
+//				registry.addMapping("/api/removehost").allowedOrigins("http://localhost:8080");
+//				registry.addMapping("/api/currenthost").allowedOrigins("http://localhost:8080");
+//			}
+//		};
+//	}
 
 }
