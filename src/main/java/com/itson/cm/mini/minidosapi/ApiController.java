@@ -102,14 +102,14 @@ public class ApiController {
 		
 		if(isHost) {
 			Host host = new Host(surname, lat, lon);
-			if(host.getSurname() == currentHost.getSurname()) {
-				responseCode = "300";
-				responseText = "host already located";
-			}else {
+//			if(host.getSurname() == currentHost.getSurname()) {
+//				responseCode = "300";
+//				responseText = "host already located";
+//			}else {
 				this.currentHost = host;
 				responseCode = "200";
 				responseText = "a host has been registered";
-			}
+			//}
 			
 			//listOfHost.add(host);
 		}else {
