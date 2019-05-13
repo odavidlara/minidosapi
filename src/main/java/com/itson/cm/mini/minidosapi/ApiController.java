@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itson.cm.mini.minidosapi.models.Host;
-
+@CrossOrigin
 @RestController
 public class ApiController {
 	
@@ -43,13 +44,13 @@ public class ApiController {
 	}
 	
 	
-	
+	@CrossOrigin
 	@RequestMapping(value = "/greeting", method = RequestMethod.GET)
 	public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) {
 		return new Greeting(counter.incrementAndGet(),
 				String.format(template, name));
 	}
-	
+	@CrossOrigin
 	@RequestMapping(value="/testin", method = RequestMethod.GET)
 	public HashMap<String, Object> testin() {
 		HashMap<String, Object> map = new HashMap<>();
@@ -58,6 +59,7 @@ public class ApiController {
 		return map;
 	}
 	
+	@CrossOrigin
 	@GetMapping("/api/currenthost")
 	@ResponseBody
 	public HashMap<String, Object> currentHost(){
